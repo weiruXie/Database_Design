@@ -1,6 +1,9 @@
 \documentclass{article}
 \usepackage{graphicx}
 \usepackage{geometry}
+\usepackage{color}
+\usepackage{booktabs}
+
  \geometry{
  a4paper,
  total={170mm,257mm},
@@ -40,65 +43,198 @@ University of Maryland
 The purpose of this document is to provide detailed requirements and design specifications as well as to describe the implementation process and result for the CMSC424 Database Design Project \textbf{History of Presidential Elections}. The document contains a description of limitations and assumptions about this model, a description of how to extract, transform and load data and how to build a web server. A top-level flow diagram is included in this document to show the logical flow of this project. Besides that, there are document forms as well as task forms to describe different tasks at each stage. For conceptual modeling, there is an ER model graphic schema and some functional dependencies derived. For logical modeling, there is a logical schema of the relational model. The document also has a list of design specification of each tasks, a user manual about each query that this project implements and some additional information.
 
 \subsection{Purpose of Project}
-The main goal of this project is to populate a relational database, called the Presidential Elections Database (PED), with data readily available on the Web. In this project, at ETL part, we need transform web HTML and XML data into a relational database that supports SQL querying and processing, format the data and integrate the data into a single relational database. Then we need to create a web-interface for users to interact and query the database. At last, a detailed report to describe tha analysis, design and implementation process will be produced.
+The main goal of this project is to populate a relational database, called the Presidential Elections Database (PED), with data readily available on the Web. In this project, at ETL part, we need transform web HTML and XML data into a relational database that supports SQL querying and processing, format the data and integrate the data into a single relational database. Then we need to create a web-interface for users to interact and query the database. At last, a detailed report to describe the analysis, design and implementation process will be produced.
 
 \subsection{Scope}
-The scope of this project involves multiple tasks. The first task is to research and collect reliable data source related to the history of the president elections in United States(1789 to 2016). 
+The scope of this project involves multiple tasks. The first task is to research and collect reliable data source related to the history of the president elections in United States(1789 to 2016). The second is extract data from these web sites and to do some "data cleaning" during transformation and loading. That is to discover and eliminate duplicate data, correct wrong data and transfer data into uniform format. The third task is to build a welcome page and a select query page. It provides an interface for users to create a query to search for information on a given election year, information on a given president/candidate, presidents who were re-elected on non-contiguous times, swing candidates, results of a party throughout the history of the elections, information on a given state, and so on. This task also needs us to write code to process and interpret these mentioned queries and provide results to users.
 
 \subsection{Assumption}
-Dummy text
+The assumptions for this project are as follows:
+\begin{itemize}
+	\item The data will be accurate, reliable and complete.
+	\item The user has basic web browsing skills to access the web interface.
+	\item It is assumed that the database server is configured appropriately to handle
+the user demands placed on the project.
+\end{itemize}
 
 \subsection{Technical and Conceptual Problems and Solutions}
-Dummy text
 \subsubsection{Technical Problems and Solutions}
-Dummy text
+{\bfseries Problem:} Implementing a web server\\
+{\bfseries Solutions:} Research to acquire necessary knowledge to install and run a web server on a demo machine.\\
+
+\noindent{\bfseries Problem:} Gathering data\\
+{\bfseries Solutions:} Search online and compare data on different websites. \\
+
+\noindent{\bfseries Problem:} Extracting data\\
+{\bfseries Solutions:} For useful and reliable data, we choose different ways to extract data considering their format. Write a web crawler in Python to extract data from Wekipedia.\\
+
+\noindent{\bfseries Problem:} Transforming data\\
+{\bfseries Solutions:} Transform extracted data into uniform format.\\
+
+\noindent{\bfseries Problem:} Loading data\\
+{\bfseries Solutions:} Load the reformatted data into our database.\\
+
+\noindent{\bfseries Problem:} Lack of knowledge in creating interactive web pages\\
+{\bfseries Solutions:} Research and learn languages like HTML, CSS, PHP. \\
+
+\noindent{\bfseries Problem:} Lack of knowledge creating web server scripts\\
+{\bfseries Solutions:} Research and learn JSP. \\
+
+\noindent{\bfseries Problem:} Writing accurate and detailed pseudocode for each task and the embedded DML code \\
+{\bfseries Solutions:} Further research the technologies and starting the programming phase. \\
+
+\noindent{\bfseries Problem:} Building the SQL queries \\
+{\bfseries Solutions:} Research and follow examples. \\
+
+\noindent{\bfseries Problem:} Returning results and display to the client side\\
+{\bfseries Solutions:} Research and follow examples. \\
+
+{\color{red} (May add things in later phrase)}
+
 
 \subsubsection{Conceptual Problems and Solutions}
-Dummy text
+{\bfseries Problem:} Identifying a complete set of tasks of the project.\\
+{\bfseries Solutions:} Deeper analysis of this project. Look through the sample of a complete project and learn from it. Talk to the teaching assistant for advice. \\
 
+\noindent{\bfseries Problem:} Designing additional queries.\\
+{\bfseries Solutions:} Analyze our extracted data and their relationship to com up with our own queries. Ask teaching assistant for approval.\\
+
+\noindent{\bfseries Problem:} Designing the flow chat.\\
+{\bfseries Solutions:} Deeper analysis and understanding of this project. Figure out what we should do at each phrase of project.\\
+
+\noindent{\bfseries Problem:} Designing and building the E-R model.\\
+{\bfseries Solutions:} Review concepts of E-R model. Analyze extracted data and their relationship. Build a E-R model with less redundancy and more convenience for queries.\\
 
 
 \section{SYSTEM ANALYSIS AND SPECIFICATION}
 \subsection{Description of Procedure}
-Dummy text
-
+PED operates via a web browser that allows users to select various search criteria in researching facts about American presidential election from 1789 through 2016.
 \subsubsection{From the User's Perspective}
-Dummy text
-
+The first step in accessing XXX(the name of our website) is to navigate a predefined website. There the user will create a query and submit it to a process running on a remote server where the PED is stored. This process will create a form containing SQL commands for the specified query and will submit it to the database. After the data has been retrieved from the database it will be formatted and presented through the user?s web browser.\\
+\includegraphics[height=250pt]{eps3.eps}
 \subsubsection{From the Developer's Perspective}
-Dummy text
-
+The developers will be employing several technologies in order to implement the enterprise in its varying phases. The diagram below shows the main components of the system and indicates what responsibility to the system each component has as well as the general flow of information. Parts of this diagram will be elaborated upon in subsequent sections.
 \subsubsection{ETL Process}
-Dummy text
-
+The designers research, analyze, and select the most relevant presidential election information websites. With the resulting websites bookmarked, Python scripts are used to extract useful data from the resulting tables, transform it into the required format. !!!! What is used???? to load data into the OlympicsDB tables located on the Oracle server to be used by OlympiChronicles to answer the different user queries through a web interface.
 \subsubsection{Web server Procedures}
-Dummy text
+The XXX internal procedures include the engine that powers the website. This involves providing various queries and results of those queries available to the user. This is accomplished by several scripts and code for pages located on a UNIX web server. When a user navigates to the XXX website, the initial web page is generated and served to the user. The remaining scripts and procedures will be described by following a typical use case scenario. The user will proceed to enter the website. A page with a list of nine queries is presented to the user. The user will then select one from among the queries to be performed. The selection will be sent to the web server where another procedure will generate a page with various options relevant to that query. The user will fill out the options desired and submit the query. The web server will receive the query request; generate the appropriate SQL commands which are then sent to the XXX. The database will then produce a results table and send it to the server from which the query was sent. Another process on the server will format the results into a web page and serve it up to the user.\\
+\includegraphics[height=300pt]{eps1.eps}
 
 
 \subsection{Documentation}
-Dummy text
+
 
 \subsubsection{Top-Level Flow Diagram}
-Dummy text
+\includegraphics[height=450pt]{eps2.eps}
 
 \subsubsection{Tasks, Subtasks, and Task Forms}
 Dummy text
-\paragraph{Web Pages Research Task\\}
-Dummy text
+\noindent\paragraph{Pages Research Task\\}
+\noindent{TASK NUMBER: }       WPRT\\
+TASK NAME:             Web Pages Research
+
+
 \paragraph{ETL Task\\}
 Dummy text
 \paragraph{Generate Welcome Page Task\\}
 Dummy text
 \paragraph{Generate Query Select Page Task\\}
 Dummy text
-\paragraph{Generate Query Page Task\\}
-Dummy text
-\paragraph{Generate SQL Query Task\\}
-Dummy text
-\paragraph{Generate Results Page Task\\}
-Dummy text
-\paragraph{Create Query Results Form Task\\}
-Dummy text
+
+
+\begin{table}[h!]
+  \centering
+  \caption{Generate Query Page Task.}
+  \label{tab:table5}
+  \begin{tabular}{lp{10cm}}
+       \hline
+     TASK NAME & Generate Query Page\\
+     PERFORMER & Apache web server\\
+     PURPOSE & To build a query page for users to select their options for a specific query\\
+     DESCRIPTION & Every time when a user clicks on a query to make their selections, the Apache web server will generate a query page.\\
+     ENABLING COND & Clicking on a query on the Query Select Page.\\
+     FREQUENCY & As often as a user clicks on a query\\
+     DURATION & Very short\\
+     INPUT & Request from user to web server\\
+     OUTPUT & Query page\\
+     DOCUMENT USE & WIQF: Web Interface Query Form\\
+     OPS PERFORMED & Provide query form to users and  allow users to make their selections. When they submit, the server will receive the input.\\
+     SUBTASKS & None\\
+     ERROR COND &  If server is busy, then Process == TimeOut\\
+       \hline
+  \end{tabular}
+\end{table}
+
+\begin{table}[h!]
+  \centering
+  \caption{Generate SQL Query Task}
+  \label{tab:table6}
+  \begin{tabular}{lp{10cm}}
+       \hline
+     TASK NAME & Generate SQL Query\\
+     PERFORMER & Apache web server\\
+     PURPOSE & To create SQL query based on users input.\\
+     DESCRIPTION & Every time when a user submits a web query form, corresponding SQL commands will be generated to task the presidential elections database.\\
+     ENABLING COND & Submitting a web query form.\\
+     FREQUENCY & As often as a user submits a web query form.\\
+     DURATION & Short\\
+     INPUT & Web query form\\
+     OUTPUT & SQL form\\
+     DOCUMENT USE & {\color{red}TODO}\\
+     OPS PERFORMED &  {\color{red}TODO}\\
+     SUBTASKS & None\\
+     ERROR COND &  If server is busy, then Process == TimeOut\\
+       \hline
+  \end{tabular}
+\end{table}
+
+\begin{table}[h!]
+  \centering
+  \caption{Create Query Results Form Task}
+  \label{tab:table7}
+  \begin{tabular}{lp{10cm}}
+       \hline
+     TASK NAME & Create Query Results Form\\
+     PERFORMER & Server side script\\
+     PURPOSE & To provide a formatted result from the Presidential Elections DB.\\
+     DESCRIPTION & To transform the result of a success query in PED into a format that can be interpreted by a web browser.\\
+     ENABLING COND & Database completing operations.\\
+     FREQUENCY & As often as a user submits a web query form and the query is performed successfully.\\
+     DURATION & Depends on the complexity of the query result.\\
+     INPUT & Data in Presidential Elections DB.\\
+     OUTPUT &  {\color{red}TODO}\\
+     DOCUMENT USE & None\\
+     OPS PERFORMED &  Transform the result of a success query in PED into a format that can be interpreted by a web browser.\\
+     SUBTASKS & None\\
+     ERROR COND &  If the output is unknown, then produce error message and stop.\\
+       \hline
+  \end{tabular}
+\end{table}
+
+
+\begin{table}[h!]
+  \centering
+  \caption{Generate Results Page Task}
+  \label{tab:table8}
+  \begin{tabular}{lp{10cm}}
+       \hline
+     TASK NAME & Generate Results Page\\
+     PERFORMER & Apache web server\\
+     PURPOSE & To generate results page.\\
+     DESCRIPTION & Every time when the query on Presidential Elections DB is performed, a query result form will be generated. The server will generate the results page and display it to users.\\
+     ENABLING COND & Getting the query result form.\\
+     FREQUENCY & As often as a user submits a web query form and the query is performed successfully.\\
+     DURATION & Short\\
+     INPUT & Query result form\\
+     OUTPUT & Results page\\
+     DOCUMENT USE & WIRF: Web Interface Result Form\\
+     OPS PERFORMED &  Generate a Results Page to be displayed to the user from the Result form.\\
+     SUBTASKS & None\\
+     ERROR COND &  If server is busy, then Process == TimeOut\\
+       \hline
+  \end{tabular}
+\end{table}
+
 
 \subsubsection{Document Forms}
 Dummy text

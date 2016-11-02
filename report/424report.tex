@@ -3,6 +3,9 @@
 \usepackage{geometry}
 \usepackage{color}
 \usepackage{booktabs}
+\usepackage{ listings} 
+
+
 
  \geometry{
  a4paper,
@@ -113,9 +116,12 @@ PED operates via a web browser that allows users to select various search criter
 The first step in accessing XXX(the name of our website) is to navigate a predefined website. There the user will create a query and submit it to a process running on a remote server where the PED is stored. This process will create a form containing SQL commands for the specified query and will submit it to the database. After the data has been retrieved from the database it will be formatted and presented through the user?s web browser.\\
 \includegraphics[height=250pt]{eps3.eps}
 \subsubsection{From the Developer's Perspective}
-The developers will be employing several technologies in order to implement the enterprise in its varying phases. The diagram below shows the main components of the system and indicates what responsibility to the system each component has as well as the general flow of information. Parts of this diagram will be elaborated upon in subsequent sections.
+The developers will be employing several technologies in order to implement the enterprise in its varying phases. The diagram below shows the main components of the system and indicates what responsibility to the system each component has as well as the general flow of information. Parts of this diagram will be elaborated upon in subsequent sections.\\
+\includegraphics[width = \hsize]{png2.png}
 \subsubsection{ETL Process}
-The designers research, analyze, and select the most relevant presidential election information websites. With the resulting websites bookmarked, Python scripts are used to extract useful data from the resulting tables, transform it into the required format. !!!! What is used???? to load data into the OlympicsDB tables located on the Oracle server to be used by OlympiChronicles to answer the different user queries through a web interface.
+The designers research, analyze, and select the most relevant presidential election information websites. With the resulting websites bookmarked, Python scripts are used to extract useful data from the resulting tables, transform it into the required format. !!!! What is used???? to load data into the OlympicsDB tables located on the Oracle server to be used by OlympiChronicles to answer the different user queries through a web interface.\\
+\includegraphics[width = \hsize]{png1.png}
+
 \subsubsection{Web server Procedures}
 The XXX internal procedures include the engine that powers the website. This involves providing various queries and results of those queries available to the user. This is accomplished by several scripts and code for pages located on a UNIX web server. When a user navigates to the XXX website, the initial web page is generated and served to the user. The remaining scripts and procedures will be described by following a typical use case scenario. The user will proceed to enter the website. A page with a list of nine queries is presented to the user. The user will then select one from among the queries to be performed. The selection will be sent to the web server where another procedure will generate a page with various options relevant to that query. The user will fill out the options desired and submit the query. The web server will receive the query request; generate the appropriate SQL commands which are then sent to the XXX. The database will then produce a results table and send it to the server from which the query was sent. Another process on the server will format the results into a web page and serve it up to the user.\\
 \includegraphics[height=300pt]{eps1.eps}
@@ -128,18 +134,98 @@ The XXX internal procedures include the engine that powers the website. This inv
 \includegraphics[height=450pt]{eps2.eps}
 
 \subsubsection{Tasks, Subtasks, and Task Forms}
-Dummy text
-\noindent\paragraph{Pages Research Task\\}
-\noindent{TASK NUMBER: }       WPRT\\
-TASK NAME:             Web Pages Research
 
+\begin{table}[h!]
+  \centering
+  \caption{Pages Research Task.}
+  \label{tab:table5}
+  \begin{tabular}{lp{10cm}}
+       \hline
+     TASK NAME & Web Pages Research\\
+     PERFORMER & PED designers\\
+     PURPOSE & To research the internet for web sites that contain data for the American presidential election from 1789 to 2016. \\
+     DESCRIPTION & Research the internet.\\
+     ENABLING COND & To populate the PED.\\
+     FREQUENCY & As often as necessary\\
+     DURATION & Varies\\
+     INPUT & Web queries\\
+     OUTPUT & Index of queried results\\
+     DOCUMENT USE &Web based search engines \\
+     OPS PERFORMED & Researching and bookmarking web sites and/or pages with American presidential election data \\
+     SUBTASKS & None\\
+     ERROR COND &  None\\
+       \hline
+  \end{tabular}
+\end{table}
 
-\paragraph{ETL Task\\}
-Dummy text
-\paragraph{Generate Welcome Page Task\\}
-Dummy text
-\paragraph{Generate Query Select Page Task\\}
-Dummy text
+\begin{table}[h!]
+  \centering
+  \caption{ETL Task.}
+  \label{tab:table5}
+  \begin{tabular}{lp{10cm}}
+       \hline
+     TASK NAME & Extract, Transform, and Load Task \\
+     PERFORMER & {\color{red}TODO}\\
+     PURPOSE & To extract data, transform or reformat it and load it into the PED \\
+     DESCRIPTION & This tool {\color{red}To be decided} extracts specific data from a web page, and load it into a predefined data relation or table.\\
+     ENABLING COND & The creation of the OlympicsDB and any addition of data or updates to the OlympicsDB\\
+     FREQUENCY & Once for the creation of the OlympicsDB and during any updates. \\
+     DURATION & Varies \\
+     INPUT & A selected web page\\
+     OUTPUT & Data into a relation in the PED\\
+     DOCUMENT USE & HTML documents\\
+     OPS PERFORMED & Data extraction, data transformation, and data loading\\
+     SUBTASKS & Web pages Research \\
+     ERROR COND &  None\\
+       \hline
+  \end{tabular}
+\end{table}
+
+\begin{table}[h!]
+  \centering
+  \caption{Generate Welcome Page Task.}
+  \label{tab:table5}
+  \begin{tabular}{lp{10cm}}
+       \hline
+     TASK NAME & Generate Welcome Page.\\
+     PERFORMER & Apache web server\\
+     PURPOSE & To generate the welcome page.\\
+     DESCRIPTION & The Apache/Tomcat web server will generate the XXX(name of our database website) welcome page (home page) when a user wants to access the information on the PED. \\
+     ENABLING COND & User accessing the XXX web interface. \\
+     FREQUENCY & As often as a user accesses the web address \\
+     DURATION & Very short\\
+     INPUT & None\\
+     OUTPUT & Welcome Page\\
+     DOCUMENT USE & WIFWF: Web Interface Welcome Form\\
+     OPS PERFORMED & Generation of welcome page, send it to the user and wait for user action\\
+     SUBTASKS & None\\
+     ERROR COND &  If A/TServer == busy, then Process=TimeOut. \\
+       \hline
+  \end{tabular}
+\end{table}
+
+\begin{table}[h!]
+  \centering
+  \caption{Generate Query Select Page Task.}
+  \label{tab:table5}
+  \begin{tabular}{lp{10cm}}
+       \hline
+     TASK NAME & Generate Query Select Page.\\
+     PERFORMER & Apache web server\\
+     PURPOSE & To generate the query select page.\\
+     DESCRIPTION & The Apache/Tomcat web server will generate the XXX query-select page when requested by the user (from the Welcome page) \\
+     ENABLING COND & User clicking on the ENTER button in the Welcome page. \\
+     FREQUENCY & As often as the user clicks on the ENTER button on the Welcome Page or the BACK button on a Query Page. \\
+     DURATION & Very short\\
+     INPUT & Signal request from user to web server. \\
+     OUTPUT & Query Select Page\\
+     DOCUMENT USE & WISF: Web Interface Select Form\\
+     OPS PERFORMED & Generate the Query Select page, send it to the user and wait for user input. \\
+     SUBTASKS & None\\
+     ERROR COND &  If A/TServer == busy, then Process=TimeOut. \\
+       \hline
+  \end{tabular}
+\end{table}
 
 
 \begin{table}[h!]
@@ -152,7 +238,7 @@ Dummy text
      PERFORMER & Apache web server\\
      PURPOSE & To build a query page for users to select their options for a specific query\\
      DESCRIPTION & Every time when a user clicks on a query to make their selections, the Apache web server will generate a query page.\\
-     ENABLING COND & Clicking on a query on the Query Select Page.\\
+     ENABLING COND & Clicking on a query on the Query Select Page\\
      FREQUENCY & As often as a user clicks on a query\\
      DURATION & Very short\\
      INPUT & Request from user to web server\\
@@ -235,13 +321,148 @@ Dummy text
   \end{tabular}
 \end{table}
 
+\begin{tabular}{|c|c|}
+        \hline
+        Column 1 & Column 2\\
+        \hline
+        second row & \\
+        third row & \\
+        \hline
+\end{tabular}
+
 
 \subsubsection{Document Forms}
-Dummy text
+\includegraphics[height=\hsize]{png3.png}
 
+\section {Task Emulation}
+\subsection{Task Design Specification}
+\subsubsection{Extract, Transform and Load Task Design}
+\emph{Google query to find American Presidents Elections sites}\\
+\begin{lstlisting}
+if website has complete and reliable data to be used by the ElectionsDB 
+    Bookmark
+else 
+    skip
+\end{lstlisting}
 
+\noindent \emph{ Write web crawlers in Python}
+\begin{lstlisting}
+for each website found in Google
+    req = urllib2.Request(url)
+    response = urllib2.urlopen(req)
+    the_page = response.read()
+    soup = BeautifulSoup(the_page, 'lxml')
+    find values look for
+    extract information into a specific format
+    write out tables
+\end{lstlisting}
 
+\subsubsection{Generate Welcome Page Task Design}
+\begin{lstlisting}
+{HTML for webpage layout}
+{HTML for welcome image with a link}
+if click_image == true
+    link to Query Select Page
+Else 
+    no action
+\end{lstlisting}
 
+\subsubsection{Generate Query Select Page Task Design}
+\begin{lstlisting}
+{HTML for webpage layout}
+{HTML for navigation bar}
+{HTML for header with welcome image and introduction}
+{HTML to display queries}
+{HTML for provide users with input or options for each query}
+if click_option == true 
+    link to SQL Query
+    query PresidentsElectionsDB
+    get results
+    link to Query Result Page
+else 
+    no action
+if type_valid_input == true
+    link to SQL Query
+    query PresidentsElectionsDB
+    get results
+    link to Query Result Page
+else
+    return " The input is not valid."   
+\end{lstlisting}
 
+\subsubsection{Generate SQL Query Task Design}
+\begin{lstlisting}
+If query == Election_Year_Query
+    SELECT c.year, p1.name, state, party, vote, votePercent, poll
+    FROM Candidates c, Person p
+    WHERE c.year = year_input and c.PID = p1.PID
+Else if query == Given_Person_Query
+    SELECT year, p.name,c.result
+    FROM Person p, Candidates c
+    WHERE p.name like name_input and c.PID = p.PID   
+Else if query  == non-contiguous re-elect times query
+    select p.name
+    from Candidates c, Person p,
+    (select p2.year as year1, p1.year as year2, p1.PID
+    from presidents p1, presidents p2
+    where p1.PID = p2.PID
+    and p1.year - p2.year > 4) as temp
+    where c.PID = temp.PID
+    and c. year > year1
+    and c.year < year2
+    and result = 'fail'
+    and c.PID = p.PID
+Else if query == Swing_Candidates_Query
+    SELECT c.year, p.name, party, result
+    FROM Candidates c, Person p,
+    (SELECT distinct c1.PID 
+    FROM Candidates c1, Candidates c2
+    WHERE c1.PID = c2.PID
+    and c1.party != c2.party) as temp
+    WHERE c.PID = temp.PID
+    and c.PID = p.PID
+Else if query == Party_Historical_Query
+    SELECT year, vote, votePercent, result
+    FROM Candidates 
+    WHERE party = party_input
+Else if query == Given_State_Query
+    SELECT p.name
+    FROM test.candidates c, test.person p
+    WHERE c.pid = p.pid AND c. result = 'success' AND p.state = state_input
+Else if query == Almost_President _Query
+    create table x
+    SELECT max(c.poll) as maxpoll,c.year
+    FROM test.candidates c#, test.person p
+    WHERE c.year > 1932
+    GROUP by c.year;
+    SELECT p.name
+    FROM x, test.candidates c, test.Person p
+    WHERE x.year = c.year and x.maxpoll = c.poll and c.result = 'fail' and c.PID = p.PID;
+Else if query == Successfully_Re-election_Query
+    CREATE TABLE presidents
+    SELECT c.PID, p.name, c.year
+    FROM test.candidates c, test.person p
+    where c.PID = p.PID AND c.result = 'success';
+    SELECT distinct p1.name
+    FROM presidents p1, presidents p2
+    WHERE p1.name = p2.name AND p1.year = p2.year-4;
+Else if query == Dominate_Party
+    SELECT count(c.PID), party
+    FROM test.candidates c
+    WHERE c.result = 'success' AND c.party != ''
+    GROUP BY c.party
+    ORDER BY count(c.PID) desc
+\end{lstlisting}
+
+\subsubsection{Generate Result Page Task Design}
+\begin{lstlisting}
+{HTML for webpage layout}
+Generate table
+    create table for results
+    populate with results from Presidential Elections Database
+    display the result able
+If click_back == true
+    link to Query Select Page  
+\end{lstlisting}
 
 \end{document}
